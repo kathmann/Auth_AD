@@ -1,0 +1,15 @@
+Auth_AD - A simple Active Directory authentication library for the 
+CodeIgniter framework
+
+This library is based on the previous excellent work of several people,
+most notably Auth_Ldap by Greg Wojtak (gwojtak). This library is a 
+simplified and cleaned up version specifically aimed at authenticating 
+using a Windows Active Directory (AD).
+
+The code for the method ldap_escape() was borrowed from 
+douglass_davis [at] earthlink dot net from his comments on the ldap_search 
+function on php.net.
+
+See? Open source works!
+
+Mark.
