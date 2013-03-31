@@ -24,7 +24,7 @@
  *
  * @package         Auth_AD
  * @author          Mark Kathmann <mark@stackedbits.com>
- * @version         0.2
+ * @version         0.3
  * @link            http://www.stackedbits.com/
  * @license         GNU Lesser General Public License (LGPL)
  * @copyright       Copyright © 2013 Mark Kathmann <mark@stackedbits.com>
@@ -161,10 +161,20 @@ class Auth_AD
 			
 			if ($continue)
 			{
-				// perform a search for the username
+				// set up the search parameters
 				$filter    = '(sAMAccountName=' . $username . ')';
 				$req_attrs = array('dn', 'cn');
-				if ($search = ldap_search($this->_ldap_conn, $this->_base_dn, $filter, $req_attrs))
+				if (strlen($this->_start_ou) > 0)
+				{
+					$search_dn = $this->_start_ou . ',' . $this->_base_dn;
+				}
+				else 
+				{
+					$search_dn = $this->_base_dn;
+				}
+				
+				// perform the search for the username
+				if ($search = ldap_search($this->_ldap_conn, $search_dn, $filter, $req_attrs))
 				{
 					if ($entries = ldap_get_entries($this->_ldap_conn, $search))
 					{

@@ -1,2 +1,6 @@
+* 2013-04-01    Mark Kathmann     <mark@stackedbits.com>
+- Added start_ou functionality to set a search start point (v0.3)
+
+
 * 2013-03-31    Mark Kathmann     <mark@stackedbits.com>
 - Initial public release of Auth_AD library (v0.2)

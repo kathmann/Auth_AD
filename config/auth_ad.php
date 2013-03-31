@@ -21,7 +21,7 @@
  * @package         Auth_AD
  * @subpackage      configuration
  * @author          Mark Kathmann <mark@stackedbits.com>
- * @version         0.2
+ * @version         0.3
  * @link            http://www.stackedbits.com/
  * @license         GNU Lesser General Public License (LGPL)
  * @copyright       Copyright © 2013 Mark Kathmann <mark@stackedbits.com>
@@ -39,7 +39,8 @@ $config['base_dn'] = 'DC=mydomain,DC=local';
 // ad_domain: the domain name to prepend (versions prior to Windows 2000) or append (Windows 2000 and up)
 $config['ad_domain'] = 'mydomain.local';
 
-// start_ou: the DN of the OU you want to start searching from. Leave empty to start from domain root
+// start_ou: the DN of the OU you want to start searching from. Leave empty to start from domain root.
+// examples: 'OU=Users' or 'OU=Corporate,OU=Users'
 $config['start_ou'] = '';
 
 // proxy_user: the (distinguished) username of the user that does the querying (AD generally does not allow anonymous binds) 
