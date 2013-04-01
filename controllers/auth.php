@@ -21,7 +21,7 @@
  * @package         Auth_AD
  * @subpackage      example
  * @author          Mark Kathmann <mark@stackedbits.com>
- * @version         0.2
+ * @version         0.4
  * @link            http://www.stackedbits.com/
  * @license         GNU Lesser General Public License (LGPL)
  * @copyright       Copyright © 2013 Mark Kathmann <mark@stackedbits.com>
@@ -35,20 +35,6 @@ class Auth extends CI_Controller
 		
 		// this loads the Auth_AD library. You can also choose to autoload it (see config/autoload.php)
 		$this->load->library('auth_ad');
-	}
-	
-	public function checkloginstatus()
-	{
-		// check if the user is already logged in
-		if(!$this->auth_ad->is_authenticated())
-		{
-			// not logged in, do what you need to do here
-			// you could, for example, send the user to the login form
-		}
-		else 
-		{
-			// already logged in, forward to the home page or some such
-		}
 	}
 	
 	public function login()
@@ -89,5 +75,32 @@ class Auth extends CI_Controller
 		}
 		
 		// now that the logout is done, you can add code for the next step(s) here
+	}
+	
+	public function checkloginstatus()
+	{
+		// check if the user is already logged in
+		if(!$this->auth_ad->is_authenticated())
+		{
+			// not logged in, do what you need to do here
+			// you could, for example, send the user to the login form
+		}
+		else 
+		{
+			// already logged in, forward to the home page or some such
+		}
+	}
+	
+	public function useringroup()
+	{
+		// check if the user is a member of a particular group (recursive search)
+		if ($this->auth_ad->in_group($username, $groupname))
+		{
+			// the user is a member of the group
+		}
+		else 
+		{
+			// nope, not a member
+		}
 	}
 }

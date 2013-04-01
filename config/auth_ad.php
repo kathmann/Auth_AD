@@ -21,7 +21,7 @@
  * @package         Auth_AD
  * @subpackage      configuration
  * @author          Mark Kathmann <mark@stackedbits.com>
- * @version         0.3
+ * @version         0.4
  * @link            http://www.stackedbits.com/
  * @license         GNU Lesser General Public License (LGPL)
  * @copyright       Copyright © 2013 Mark Kathmann <mark@stackedbits.com>
