@@ -355,7 +355,7 @@ class Auth_AD
 			}
 			else 
 			{
-				log_message('debug', 'Auth_AD: Successfully bound to AD. Performing DN lookup for user ' . $username);
+				log_message('debug', 'Auth_AD: Successfully bound to AD. Performing DN lookup for user');
 			}
 		}
 		
