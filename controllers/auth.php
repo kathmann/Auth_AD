@@ -34,7 +34,7 @@ class Auth extends CI_Controller
 		parent::__construct();
 		
 		// this loads the Auth_AD library. You can also choose to autoload it (see config/autoload.php)
-		$this->load->library('auth_ad');
+		$this->load->library('Auth_AD');
 	}
 	
 	public function login()
