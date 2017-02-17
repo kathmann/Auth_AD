@@ -1,3 +1,12 @@
+* 2016-08-15 (0.4.1)    Rob Pomeroy     <rob@pomeroy.me>
+- Facilities for changing passwords for self and others (if admin)
+- Simple functions to retrieve lots of data about users, including Exchange-related
+- Half-written function to create a user
+- Half-written function to modify a user
+- Functions designed for use by cron (no auth)
+- Automatic re-authentication function, for running privileged tasks
+- Slightly risky encryption of passwords/storage in cookie - needs improvement
+
 * 2013-04-01 (0.4)    Mark Kathmann     <mark@stackedbits.com>
 - Added in_group method to check group membership
 - Cleaned up some redundant code, reorganised into menthods

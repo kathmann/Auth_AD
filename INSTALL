@@ -4,10 +4,10 @@ Copy the following files to the corresponding directories in your
 CodeIgniter project's 'application' directory:
 
   config/auth_ad.php
-  controllers/auth.php *
+  controllers/Auth.php *
   libraries/Auth_AD.php
 
-*) The file 'auth.php' in the 'controllers' directory is an optional 
+*) The file 'Auth.php' in the 'controllers' directory is an optional 
 example controller file that shows how to use the Auth_AD library in your 
 application.
 
@@ -19,3 +19,7 @@ TIP: Do *NOT* *EVER* use your domain admin account as the proxy_user. That
 is very very very bad security. It is often best to create a specific user 
 per application so you can easily manage security on a per-application 
 basis.
+
+Rob's tip: with my modifications to the original scripts, you can use
+your application to log in as a domain admin. No need to place admin
+credentials in a config file.
