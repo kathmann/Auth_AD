@@ -63,7 +63,7 @@ class Auth_AD
 {
     // register properties
     private $_hosts;
-    private $_ports;
+    private $_port;
     private $_base_dn;
     private $_ad_domain;
     private $_start_ou;
@@ -107,7 +107,7 @@ class Auth_AD
 
         // register the configuration variables as properties
         $this -> _hosts = $this -> ci -> config -> item('hosts');
-        $this -> _ports = $this -> ci -> config -> item('ports');
+        $this -> _port = $this -> ci -> config -> item('port');
         $this -> _tls = $this -> ci -> config -> item('tls');
         $this -> _base_dn = $this -> ci -> config -> item('base_dn');
         $this -> _ad_domain = $this -> ci -> config -> item('ad_domain');
@@ -1069,14 +1069,25 @@ class Auth_AD
 
         // attempt to connect to each of the AD servers, stop if a connection is
         // succesful
-        foreach ($this->_hosts as $host) {
-            $this -> _ldap_conn = ldap_connect($host);
-            if ($this -> _ldap_conn) {
-                break;
+        foreach ($this->_hosts as $index => $host) {
+            // test if AD server is alive
+            $hostAlive = @fsockopen($host, $this->_port, $errno, $errstr, 1);
+            if(!$hostAlive) {
+                log_message('info', 'Auth_AD: Unable to comunicate with AD server ' . $host);
+                // if AD server is down, it's removed from servers array
+                unset($this->_hosts[$index]);
+                continue;
             } else {
-                log_message('info', 'Auth_AD: Error connecting to AD server ' . $host);
+                $this -> _ldap_conn = ldap_connect($host, $this->_port);
+                if ($this -> _ldap_conn) {
+                    log_message('info', 'Auth_AD: Connected to AD server ' . $host);
+                    break;
+                } else {
+                    log_message('info', 'Auth_AD: Error connecting to AD server ' . $host);
+                }
             }
         }
+
 
         // check for an active LDAP connection
         if (!$this -> _ldap_conn) {
