@@ -30,8 +30,8 @@
 // hosts: an array of AD servers (usually domain controllers) to use for authentication		
 $config['hosts'] = array('mydc01.mydomain.local', 'mydc02.mydomain.local');
 
-// ports: an array containing the remote port number to connect to (default is 389) 
-$config['ports'] = array(389);
+// port: the remote port number to connect to (default is 389) 
+$config['port'] = 389;
 
 // base_dn: the base DN of your Active Directory domain
 $config['base_dn'] = 'DC=mydomain,DC=local';
